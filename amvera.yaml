@@ -1,7 +1,7 @@
 meta:
   environment: node
   toolchain:
-    name: node
+    name: npm
     version: 18
 
 build:
@@ -12,5 +12,3 @@ build:
 
 run:
   command: node index.js
-  persistence:
-    - /data

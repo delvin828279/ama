@@ -1,7 +1,7 @@
 {
   "inbounds": [
     {
-      "port": 8080,
+      "port": 80,
       "protocol": "vless",
       "settings": {
         "clients": [{"id": "52a2859a-c704-4d35-aa6c-e44885e490c2", "level": 0}],
@@ -9,7 +9,11 @@
       },
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/vless"}
+        "wsSettings": {"path": "/"}
+      },
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
       }
     }
   ],

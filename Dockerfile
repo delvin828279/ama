@@ -8,7 +8,5 @@ FROM alpine:latest
 RUN apk add --no-cache ca-certificates
 COPY --from=builder /usr/local/bin/xray /usr/local/bin/xray
 COPY config.json /etc/xray/config.json
-# کپی کردن فایل صفحه وب به پوشه سرور
-COPY index.html /etc/xray/index.html 
 EXPOSE 8080
 CMD ["xray", "run", "-config", "/etc/xray/config.json"]

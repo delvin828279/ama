@@ -1,7 +1,7 @@
-FROM golang:1.21-alpine AS builder
+FROM golang:1.24-alpine AS builder
 
 RUN apk add --no-cache git
-RUN git clone https://github.com/XTLS/Xray-core.git /xray
+RUN git clone --depth=1 https://github.com/XTLS/Xray-core.git /xray
 WORKDIR /xray
 RUN go build -o /usr/local/bin/xray ./main
 

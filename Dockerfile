@@ -6,8 +6,11 @@ WORKDIR /xray
 RUN go build -o /usr/local/bin/xray ./main
 
 FROM alpine:latest
-RUN apk add --no-cache ca-certificates
+RUN apk add --no-cache ca-certificates nginx
 COPY --from=builder /usr/local/bin/xray /usr/local/bin/xray
 COPY config.json /etc/xray/config.json
+COPY index.html /usr/share/nginx/html/index.html
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
 EXPOSE 80
-CMD ["xray", "run", "-config", "/etc/xray/config.json"]
+CMD ["/start.sh"]

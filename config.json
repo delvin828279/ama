@@ -1,15 +1,18 @@
 {
   "inbounds": [
     {
-      "port": 80,
+      "port": 8080,
       "protocol": "vless",
       "settings": {
         "clients": [{"id": "52a2859a-c704-4d35-aa6c-e44885e490c2", "level": 0}],
         "decryption": "none"
       },
       "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/"}
+        "network": "xhttp",
+        "xhttpSettings": {
+          "path": "/",
+          "mode": "packet"
+        }
       },
       "sniffing": {
         "enabled": true,
@@ -17,5 +20,14 @@
       }
     }
   ],
-  "outbounds": [{"protocol": "freedom"}]
+  "outbounds": [{"protocol": "freedom"}],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["fallback"],
+        "outboundTag": "local_html"
+      }
+    ]
+  }
 }

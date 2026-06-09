@@ -1,9 +1,9 @@
 FROM golang:1.24-alpine AS builder
 
 RUN apk add --no-cache git
-RUN git clone --depth=1 --branch v25.1.30 https://github.com/XTLS/Xray-core.git /xray
+RUN git clone --depth=1 --branch v24.12.31 https://github.com/XTLS/Xray-core.git /xray
 WORKDIR /xray
-RUN GOTOOLCHAIN=go1.24 go build -o /usr/local/bin/xray ./main
+RUN go build -o /usr/local/bin/xray ./main
 
 FROM alpine:latest
 RUN apk add --no-cache ca-certificates
